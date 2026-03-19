@@ -62,7 +62,7 @@
       "description": "基于已生成静态壁纸，生成动态视频",
       "service": "live",
       "input": {
-        "image_path": "examples/demo_outputs/static_recommend_three/sample/sample_gen_ghibli_pure_1773649341.png",
+        "image_path": "examples/demo_inputs/garden_ghibli_pure.png",
         "generate_video": true
       }
     }

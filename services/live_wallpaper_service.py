@@ -4,7 +4,7 @@ from typing import Any, Dict, Optional
 from generator.motion_director import MotionDirector
 from utils.env_utils import require_google_api_key
 from utils.input_resolver import resolve_input_image
-
+from utils.video_to_gif import convert_mp4_to_gif
 class LiveWallpaperService:
     """
     动态壁纸服务：
@@ -59,12 +59,22 @@ class LiveWallpaperService:
             result["video_generated"] = bool(ok)
 
             if ok:
-                result["message"] = "动态壁纸视频生成完成。"
                 source_image = motion_result["source_image"]
+
                 if source_image.endswith(".png"):
-                    result["video_path"] = source_image.replace(".png", "_raw.mp4")
+                    raw_mp4_path = source_image.replace(".png", "_raw.mp4")
                 elif source_image.endswith(".jpg") or source_image.endswith(".jpeg"):
-                    result["video_path"] = os.path.splitext(source_image)[0] + "_raw.mp4"
+                    raw_mp4_path = os.path.splitext(source_image)[0] + "_raw.mp4"
+                else:
+                    raw_mp4_path = os.path.splitext(source_image)[0] + "_raw.mp4"
+
+                try:
+                    gif_path = convert_mp4_to_gif(raw_mp4_path)
+                    result["message"] = "动态壁纸 GIF 生成完成。"
+                    result["video_path"] = gif_path
+                except Exception as e:
+                    result["message"] = f"动态视频已生成，但 GIF 转换失败：{e}"
+                    result["video_path"] = raw_mp4_path
             else:
                 result["message"] = "动态脚本已生成，但视频生成失败。"
 
