@@ -1,0 +1,41 @@
+# secrets
+.env
+
+# python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# virtual envs
+.venv/
+venv/
+env/
+
+# runtime outputs / temp data
+runtime/
+tmp/
+logs/
+
+# local debug logs
+*.log
+
+# macOS
+.DS_Store
+
+# editors
+.vscode/
+.idea/
+
+# test caches
+.pytest_cache/
+
+# notebook checkpoints
+.ipynb_checkpoints/
+
+# build artifacts
+dist/
+build/
+
+# user-generated media
+*.mp4
+*.gif

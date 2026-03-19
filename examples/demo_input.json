@@ -1,0 +1,70 @@
+{
+  "demo_cases": [
+    {
+      "name": "static_default_one",
+      "description": "上传一张图片，不指定风格，默认生成 1 张推荐静态壁纸",
+      "service": "static",
+      "input": {
+        "image_path": "examples/demo_inputs/sample.jpg",
+        "count": 1,
+        "styles": null,
+        "output_dir": "examples/demo_outputs/static_default_one"
+      }
+    },
+    {
+      "name": "static_recommend_three",
+      "description": "上传一张图片，不指定风格，生成 3 张推荐风格静态壁纸",
+      "service": "static",
+      "input": {
+        "image_path": "examples/demo_inputs/sample.jpg",
+        "count": 3,
+        "styles": null,
+        "output_dir": "examples/demo_outputs/static_recommend_three"
+      }
+    },
+    {
+      "name": "static_custom_style_builtin",
+      "description": "上传一张图片，指定风格库中已有风格",
+      "service": "static",
+      "input": {
+        "image_path": "examples/demo_inputs/sample.jpg",
+        "count": 1,
+        "styles": [
+          "makoto_shinkai"
+        ],
+        "output_dir": "examples/demo_outputs/static_custom_style_builtin"
+      }
+    },
+    {
+      "name": "static_custom_style_fallback",
+      "description": "上传一张图片，指定一个风格库中不存在的风格，触发 LLM fallback prompt",
+      "service": "static",
+      "input": {
+        "image_path": "examples/demo_inputs/sample.jpg",
+        "count": 1,
+        "styles": [
+          "glass_hologram_future_city"
+        ],
+        "output_dir": "examples/demo_outputs/static_custom_style_fallback"
+      }
+    },
+    {
+      "name": "live_script_only",
+      "description": "基于已生成静态壁纸，生成动态视频脚本，不真正生成视频",
+      "service": "live",
+      "input": {
+        "image_path": "examples/demo_outputs/static_recommend_three/sample/sample_gen_ghibli_pure_1773649341.png",
+        "generate_video": false
+      }
+    },
+    {
+      "name": "live_generate_video",
+      "description": "基于已生成静态壁纸，生成动态视频",
+      "service": "live",
+      "input": {
+        "image_path": "examples/demo_outputs/static_recommend_three/sample/sample_gen_ghibli_pure_1773649341.png",
+        "generate_video": true
+      }
+    }
+  ]
+}
