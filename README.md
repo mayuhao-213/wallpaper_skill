@@ -141,7 +141,7 @@
 你只需要在你的 Agent 里输入一句类似的话：
 
 > 请帮我添加一个生成壁纸的 Skill，请访问：  
-> `https://github.com/mayuhao-213/wallpaper_skill/AI.md`  
+> `https://github.com/mayuhao-213/wallpaper_skill/blob/main/AI.md`  
 > 然后按照里面的内容一步一步执行。  
 > 如果过程中需要 Google API Key，请向我询问，并根据我的输入创建 `.env` 文件。
 
@@ -273,7 +273,7 @@ You can simply ask your agent with something like:
 
 > Please help me install a wallpaper generation skill.  
 > Visit:  
-> `https://github.com/mayuhao-213/wallpaper_skill/AI.md`  
+> `https://github.com/mayuhao-213/wallpaper_skill/blob/main/AI.md`  
 > and follow the instructions step by step.
 
 In other words:
