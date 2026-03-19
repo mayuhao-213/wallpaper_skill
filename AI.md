@@ -53,7 +53,7 @@ You may also need to ask for:
 
 Use this repository unless the user provides another source:
 
-`https://github.com/mayuhao-213/wallpaper-skill.git`
+`https://github.com/mayuhao-213/wallpaper_skill.git`
 
 ---
 
@@ -91,7 +91,7 @@ Do not guess a different workspace if an active one already exists.
 If the project does not exist locally, clone it:
 ```bash
 
-    git clone https://github.com/mayuhao-213/wallpaper-skill.git
+    git clone https://github.com/mayuhao-213/wallpaper_skill.git
 ```
 
 If it already exists, ask the user whether to update or reuse the current local copy.
