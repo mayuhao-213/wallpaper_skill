@@ -128,7 +128,7 @@
 **Monet 花园**  
 
 <p align="center">
-  <img src="examples/demo_inputs/garden.PNG" alt="Monet Garden" width="70%" />
+  <img src="examples/demo_inputs/garden_ghibli_pure.png" alt="Monet Garden" width="70%" />
 </p>
 
 ---
@@ -259,7 +259,7 @@ Below are placeholder showcase sections that can be expanded over time with diff
 **Monet Garden**  
 
 <p align="center">
-  <img src="examples/demo_inputs/garden.PNG" alt="Garden" width="70%" />
+  <img src="examples/demo_inputs/garden_ghibli_pure.png" alt="Garden" width="70%" />
 </p>
 
 ---
