@@ -135,6 +135,30 @@
 
 ## 如何安装
 
+### 本地运行
+
+需要 Python 3.10+（建议 3.11）和可访问所用模型的 Google API Key。
+
+```bash
+git clone https://github.com/mayuhao-213/wallpaper_skill.git
+cd wallpaper_skill
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+```
+
+在项目根目录的 `.env` 中配置 `GOOGLE_API_KEY`（参见 `.env.example`），再运行：
+
+```bash
+./run_skill.sh --mode static --image examples/demo_inputs/garden_ghibli_pure.png --count 1
+```
+
+wrapper 优先使用本地 `.venv`，否则使用调用方 `PATH` 中的 Python（conda 需先激活）。
+相对路径以 skill 根目录为起点；默认输入副本和生成结果分别保存在
+`runtime/uploads` 和 `runtime/outputs/openclaw_runs`。结果和错误会显示在终端。
+示例会调用模型；它不是离线测试。
+
+### 接入 Agent
+
 如果你想把这个 Skill 接到你自己的 OpenClaw / AI Agent 里，  
 不需要自己手动一步一步研究怎么部署。
 
@@ -265,6 +289,31 @@ Below are placeholder showcase sections that can be expanded over time with diff
 ---
 
 ## How to Install
+
+### Run locally
+
+Use Python 3.10+ (3.11 recommended) and a Google API key with access to the models used.
+
+```bash
+git clone https://github.com/mayuhao-213/wallpaper_skill.git
+cd wallpaper_skill
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+```
+
+Set `GOOGLE_API_KEY` in the project-root `.env` (see `.env.example`), then run:
+
+```bash
+./run_skill.sh --mode static --image examples/demo_inputs/garden_ghibli_pure.png --count 1
+```
+
+The wrapper prefers the local `.venv`, then Python on the caller's `PATH`; activate
+conda first if using it. Relative paths start at the skill root. Input copies and
+generated outputs default to `runtime/uploads` and `runtime/outputs/openclaw_runs`.
+Results and errors remain visible in the terminal. This example calls the model;
+it is not an offline test.
+
+### Connect to an agent
 
 If you want to add this skill to your own OpenClaw / AI Agent,  
 you do not need to manually go through every deployment step yourself.

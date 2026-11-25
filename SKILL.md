@@ -156,7 +156,7 @@ description: Generate static wallpapers and live wallpapers from an input image,
 
 推荐的运行时上传目录为：
 
-`/home/admin/.openclaw/workspace/skills/wallpaper_skill/runtime/uploads`
+`<skill-directory>/runtime/uploads`（相对于本 skill 的实际安装目录）
 
 不要假设任意远程 URL 都可直接使用，除非图片已先下载到本地。
 
@@ -167,7 +167,7 @@ description: Generate static wallpapers and live wallpapers from an input image,
 如果用户消息中包含上传图片，但没有显式本地路径，应按以下流程处理：
 
 1. 将上传图片保存或复制到：
-   `/home/admin/.openclaw/workspace/skills/wallpaper_skill/runtime/uploads`
+   `<skill-directory>/runtime/uploads`
 2. 将保存后的本地文件路径作为 `image_path`
 3. 再调用本 skill 的 wrapper 脚本执行生成
 
@@ -372,11 +372,10 @@ description: Generate static wallpapers and live wallpapers from an input image,
 
 ## Execution
 
-当本 skill 被选中时，不要切换到系统 Python，也不要临时发明其他执行方式。
-
-始终使用以下本地 wrapper 脚本：
-
-`/home/admin/.openclaw/workspace/skills/wallpaper_skill/run_skill.sh`
+当本 skill 被选中时，使用实际安装目录中的 `run_skill.sh`。
+先将工作目录切换到该目录，再运行下面的命令。wrapper 优先使用本目录的
+`.venv/bin/python`；否则使用调用方 `PATH` 中的 Python。使用 conda 时需先激活环境。
+不要假设安装目录是 `/home/admin`。其他目录中的输入图片请传入绝对路径。
 
 ### Static wallpaper
 
@@ -385,30 +384,30 @@ description: Generate static wallpapers and live wallpapers from an input image,
 默认命令：
 
 ```bash
-/home/admin/.openclaw/workspace/skills/wallpaper_skill/run_skill.sh --mode static --image "<image_path>" --count 1 --output-dir "/home/admin/.openclaw/workspace/skills/wallpaper_skill/runtime/outputs/openclaw_runs"
+./run_skill.sh --mode static --image "<image_path>" --count 1 --output-dir runtime/outputs/openclaw_runs
 ```
 
 指定风格时：
 ```bash
-/home/admin/.openclaw/workspace/skills/wallpaper_skill/run_skill.sh --mode static --image "<image_path>" --styles <style1> <style2> --output-dir "/home/admin/.openclaw/workspace/skills/wallpaper_skill/runtime/outputs/openclaw_runs"
+./run_skill.sh --mode static --image "<image_path>" --styles <style1> <style2> --output-dir runtime/outputs/openclaw_runs
 ```
 ### Live wallpaper script only
 
 当输入已经是生成好的静态壁纸，且用户想继续做动态效果时，使用：
 ```bash
-/home/admin/.openclaw/workspace/skills/wallpaper_skill/run_skill.sh --mode live --image "<image_path>"
+./run_skill.sh --mode live --image "<image_path>"
 ```
 ### Full workflow
 
 当用户想从原始图片直接生成动态壁纸时，使用：
 ```bash
-/home/admin/.openclaw/workspace/skills/wallpaper_skill/run_skill.sh --mode both --image "<image_path>" --count 1 --output-dir "/home/admin/.openclaw/workspace/skills/wallpaper_skill/runtime/outputs/openclaw_runs"
+./run_skill.sh --mode both --image "<image_path>" --count 1 --output-dir runtime/outputs/openclaw_runs
 ```
 ### Full workflow with actual video generation
 
 只有当用户明确要求真实视频时，才使用：
 ```bash
-/home/admin/.openclaw/workspace/skills/wallpaper_skill/run_skill.sh --mode both --image "<image_path>" --count 1 --output-dir "/home/admin/.openclaw/workspace/skills/wallpaper_skill/runtime/outputs/openclaw_runs" --video
+./run_skill.sh --mode both --image "<image_path>" --count 1 --output-dir runtime/outputs/openclaw_runs --video
 ```
 ⸻
 
