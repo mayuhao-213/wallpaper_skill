@@ -133,6 +133,11 @@ If the available Python is too old, do not continue with dependency installation
 
 ## Step 6. Create or activate a Python environment
 
+Run from the skill root directory. The wrapper uses `.venv/bin/python` when
+present; otherwise it uses `python3` (or `python`) from the caller's `PATH`.
+It does not activate conda automatically. If using conda, activate the chosen
+environment before invoking the wrapper and avoid an unrelated local `.venv`.
+
 Preferred option: conda
 ```bash
     conda create -n wallpaper_skill python=3.11 -y
@@ -199,7 +204,9 @@ Run:
     chmod +x run_skill.sh
 ```
 
-If the wrapper uses a fixed conda path, confirm that the path matches the user’s real environment.
+The wrapper locates the skill directory relative to itself, so no machine-specific
+conda or OpenClaw path needs to be edited. Relative image and output paths are
+resolved from the skill root; use an absolute image path for files elsewhere.
 
 ---
 
@@ -254,7 +261,7 @@ If the skill is missing, check:
 Run a minimal test from the skill root:
 ```bash
 
-    ./run_skill.sh --mode static --image examples/demo_inputs/sample.jpg --count 1 --output-dir runtime/outputs/openclaw_runs
+    ./run_skill.sh --mode static --image examples/demo_inputs/garden_ghibli_pure.png --count 1 --output-dir runtime/outputs/openclaw_runs
 ```
 
 If this fails, inspect:
@@ -262,7 +269,7 @@ If this fails, inspect:
 - `.env`
 - Python environment
 - wrapper permissions
-- `/tmp/wallpaper_skill_bash.log`
+- the wrapper's terminal output and errors
 - `/tmp/wallpaper_skill_debug.log`
 
 ---

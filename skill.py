@@ -109,7 +109,7 @@ class WallpaperSkill:
         payload 示例：
         {
           "mode": "static",
-          "image_path": "examples/demo_inputs/sample.jpg",
+          "image_path": "examples/demo_inputs/garden_ghibli_pure.png",
           "count": 1,
           "styles": ["makoto_shinkai"],
           "output_dir": "examples/demo_outputs/test_case",
@@ -189,7 +189,9 @@ def build_payload_from_args(args: argparse.Namespace) -> Dict[str, Any]:
         "image_path": args.image,
         "count": args.count,
         "styles": args.styles,
-        "output_dir": args.output_dir or "/home/admin/.openclaw/workspace/skills/wallpaper_skill/runtime/outputs/openclaw_runs",
+        "output_dir": args.output_dir or os.path.join(
+            os.path.dirname(os.path.abspath(__file__)), "runtime", "outputs", "openclaw_runs"
+        ),
         "generate_video": args.video,
     }
 

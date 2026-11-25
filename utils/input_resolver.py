@@ -3,7 +3,9 @@ import shutil
 from typing import Optional
 
 
-RUNTIME_UPLOAD_DIR = "/home/admin/.openclaw/workspace/skills/wallpaper_skill/runtime/uploads"
+RUNTIME_UPLOAD_DIR = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "runtime", "uploads"
+)
 
 
 def ensure_runtime_dirs() -> None:
